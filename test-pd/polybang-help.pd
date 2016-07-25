@@ -1,0 +1,56 @@
+#N canvas 0 22 554 518 10;
+#X obj 29 63 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 29 147 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 52 147 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 75 147 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X floatatom 98 148 5 0 0 0 - - -, f 5;
+#X msg 59 56 4 5;
+#X obj 157 22 polybang;
+#X text 214 22 - polybang;
+#X msg 157 49 What it does;
+#X obj 157 490 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 157 279 Outlets;
+#X msg 157 149 Inlets;
+#X text 172 301 1st outlet: Bang every A (first creation argument)
+;
+#X text 172 321 2nd outlet: Bang every B (second creation argument)
+;
+#X text 172 341 3rd outlet: Bang when A & B bang together;
+#X text 172 361 4th outlet: Output the current count \, starting from
+0 \, proceeding to (A*B)-1 \, and then resetting back to 0;
+#X obj 29 125 polybang 3 2;
+#X msg 63 103 6;
+#X msg 98 103 7;
+#X text 169 72 Polybang internally counts the number of bangs it receives
+and bangs every A and B interval (initially entered as creation arguments).
+When both the A and B bang \, the synch outlet (3rd outlet) bangs.
+Finally \, the current count is sent out the 4th outlet with each bang
+received.;
+#X text 172 424 Created by Rafael Hernandez (a.k.a Cheetomoskeeto)
+\; Copyright (c) 2016 \; MIT License \; See "LICENSE.txt" for additional
+license information;
+#X msg 157 399 Copyright and license information;
+#X msg 64 78 reset;
+#X text 168 171 1st inlet \; - Bang: causes polybang to fire \; - [reset(:
+Reset the current bang count \; - [A B(: changes the ratio and resets
+polybang \;;
+#X text 168 230 2nd and 3rd inlet \; - Changes A and B respectively
+\; - Does NOT reset polybang \;;
+#X connect 0 0 16 0;
+#X connect 5 0 16 0;
+#X connect 8 0 11 0;
+#X connect 10 0 21 0;
+#X connect 11 0 10 0;
+#X connect 16 0 1 0;
+#X connect 16 1 2 0;
+#X connect 16 2 3 0;
+#X connect 16 3 4 0;
+#X connect 17 0 16 1;
+#X connect 18 0 16 2;
+#X connect 21 0 9 0;
+#X connect 22 0 16 0;
